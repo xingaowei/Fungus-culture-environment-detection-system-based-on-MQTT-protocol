@@ -1,0 +1,13 @@
+# Filename: Dockerfile.mqtt_server
+
+FROM eclipse-mosquitto:2.0
+
+ENV LISTEN_PORT=1883
+ENV PERSISTENCE=false
+ENV LOG_DESTINATION="stdout"
+
+COPY mosquitto.conf /mosquitto/config/mosquitto.conf
+
+EXPOSE ${LISTEN_PORT}
+
+CMD ["sh", "-c", "exec mosquitto -c /mosquitto/config/mosquitto.conf"]

@@ -1,0 +1,165 @@
+# subscriptions.yaml
+
+subscriptions:
+  - broker_address: mqtt_server
+    broker_port: 1883
+    metadata:
+      - version: 1.3.0
+      - brand: SONY
+      - thresholds:
+          CO2 Concentration:
+            max: 450.0
+            min: 300.0
+          Humidity:
+            max: 60.0
+            min: 30.0
+          Temperature:
+            max: 29.0
+            min: 0.0
+      - gps_location:
+          altitude: 120.0
+          latitude: 35.675
+          longitude: 139.6503
+    password: null
+    sensor_name: Combined Sensor 1
+    sensor_types:
+      - Temperature
+      - Humidity
+      - CO2 Concentration
+    topic: sensor/location_1
+    username: null
+  - broker_address: mqtt_server
+    broker_port: 1883
+    metadata:
+      - version: 1.3.0
+      - brand: SONY
+      - thresholds:
+          CO2 Concentration:
+            max: 480
+            min: 280
+          Humidity:
+            max: 80
+            min: 20
+          Temperature:
+            max: 40
+            min: -10
+      - gps_location:
+          altitude: 120
+          latitude: 0.675
+          longitude: 39.6503
+    password: null
+    sensor_name: Combined Sensor 2
+    sensor_types:
+      - Temperature
+      - Humidity
+      - CO2 Concentration
+    topic: sensor/location_2
+    username: null
+  - broker_address: mqtt_server
+    broker_port: 1883
+    metadata:
+      - version: 1.3.0
+      - brand: SONY
+      - thresholds:
+          CO2 Concentration:
+            max: 480
+            min: 280
+          Humidity:
+            max: 80
+            min: 20
+          Temperature:
+            max: 40
+            min: -10
+      - gps_location:
+          altitude: 120
+          latitude: 0.675
+          longitude: 39.6503
+    password: null
+    sensor_name: Combined Sensor 3
+    sensor_types:
+      - Temperature
+      - Humidity
+      - CO2 Concentration
+    topic: sensor/location_3
+    username: null
+  - broker_address: mqtt_server
+    broker_port: 1883
+    metadata:
+      - version: 1.3.0
+      - brand: SONY
+      - thresholds:
+          CO2 Concentration:
+            max: 480
+            min: 280
+          Humidity:
+            max: 80
+            min: 20
+          Temperature:
+            max: 40
+            min: -10
+      - gps_location:
+          altitude: 120
+          latitude: 0.675
+          longitude: 39.6503
+    password: null
+    sensor_name: Combined Sensor 4
+    sensor_types:
+      - Temperature
+      - Humidity
+      - CO2 Concentration
+    topic: sensor/location_4
+    username: null
+  - broker_address: mqtt_server
+    broker_port: 1883
+    metadata:
+      - version: 1.3.0
+      - brand: SONY
+      - thresholds:
+          CO2 Concentration:
+            max: 450
+            min: 300
+          Humidity:
+            max: 60
+            min: 30
+          Temperature:
+            max: 29
+            min: 0
+      - gps_location:
+          altitude: 120
+          latitude: 0.675
+          longitude: 39.6503
+    password: null
+    sensor_name: Combined Sensor 5
+    sensor_types:
+      - Temperature
+      - Humidity
+      - CO2 Concentration
+    topic: sensor/location_5
+    username: null
+  - broker_address: mqtt_server
+    broker_port: 1883
+    metadata:
+      - version: 1.3.0
+      - brand: SONY
+      - thresholds:
+          CO2 Concentration:
+            max: 450
+            min: 300
+          Humidity:
+            max: 60
+            min: 30
+          Temperature:
+            max: 29
+            min: 0
+      - gps_location:
+          altitude: 120
+          latitude: 0.675
+          longitude: 39.6503
+    password: null
+    sensor_name: Combined Sensor 6
+    sensor_types:
+      - Temperature
+      - Humidity
+      - CO2 Concentration
+    topic: sensor/location_6
+    username: null

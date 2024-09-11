@@ -1,0 +1,127 @@
+services:
+  # Database Service
+  sdmm_db:
+    build:
+      context: ./sdmm-db
+      dockerfile: Dockerfile
+    networks:
+      - sdmm_network
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=sensor_db
+
+  # Backend Service
+  sdmm_backend:
+    build:
+      context: ./sdmm-backend
+      dockerfile: Dockerfile
+    networks:
+      - sdmm_network
+    depends_on:
+      - sdmm_db
+      - mqtt_server
+
+  # Frontend Service
+  sdmm_frontend:
+    build:
+      context: ./sdmm-frontend
+      dockerfile: Dockerfile
+    networks:
+      - sdmm_network
+    ports:
+      - "80:80"
+    depends_on:
+      - sdmm_db
+      - mqtt_server
+      - sdmm_backend
+
+  # MQTT Server
+  mqtt_server:
+    build:
+      context: ./mqtt-sensors
+      dockerfile: Dockerfile.mqtt_server
+    ports:
+      - "1883:1883"
+    environment:
+      - LISTEN_PORT=1883
+      - PERSISTENCE=false
+      - LOG_DESTINATION=stdout
+    networks:
+      - sdmm_network
+
+  mqtt_publisher_1:
+    build:
+      context: ./mqtt-sensors
+      dockerfile: Dockerfile.mqtt_publisher
+    environment:
+      - MQTT_SERVER=mqtt_server
+      - MQTT_PORT=1883
+      - MQTT_TOPIC=sensor/location_1
+      - PUBLISH_INTERVAL=1
+    networks:
+      - sdmm_network
+
+  mqtt_publisher_2:
+    build:
+      context: ./mqtt-sensors
+      dockerfile: Dockerfile.mqtt_publisher
+    environment:
+      - MQTT_SERVER=mqtt_server
+      - MQTT_PORT=1883
+      - MQTT_TOPIC=sensor/location_2
+      - PUBLISH_INTERVAL=1
+    networks:
+      - sdmm_network
+
+  mqtt_publisher_3:
+    build:
+      context: ./mqtt-sensors
+      dockerfile: Dockerfile.mqtt_publisher
+    environment:
+      - MQTT_SERVER=mqtt_server
+      - MQTT_PORT=1883
+      - MQTT_TOPIC=sensor/location_3
+      - PUBLISH_INTERVAL=1
+    networks:
+      - sdmm_network
+
+  mqtt_publisher_4:
+    build:
+      context: ./mqtt-sensors
+      dockerfile: Dockerfile.mqtt_publisher
+    environment:
+      - MQTT_SERVER=mqtt_server
+      - MQTT_PORT=1883
+      - MQTT_TOPIC=sensor/location_4
+      - PUBLISH_INTERVAL=1
+    networks:
+      - sdmm_network
+
+  mqtt_publisher_5:
+    build:
+      context: ./mqtt-sensors
+      dockerfile: Dockerfile.mqtt_publisher
+    environment:
+      - MQTT_SERVER=mqtt_server
+      - MQTT_PORT=1883
+      - MQTT_TOPIC=sensor/location_5
+      - PUBLISH_INTERVAL=1
+    networks:
+      - sdmm_network
+
+  mqtt_publisher_6:
+    build:
+      context: ./mqtt-sensors
+      dockerfile: Dockerfile.mqtt_publisher
+    environment:
+      - MQTT_SERVER=mqtt_server
+      - MQTT_PORT=1883
+      - MQTT_TOPIC=sensor/location_6
+      - PUBLISH_INTERVAL=1
+    networks:
+      - sdmm_network
+
+networks:
+  sdmm_network:
+    driver: bridge

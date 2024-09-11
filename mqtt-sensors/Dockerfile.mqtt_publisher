@@ -1,0 +1,19 @@
+# Filename: Dockerfile.mqtt_publisher
+
+FROM python:3.12-slim
+
+RUN pip install paho-mqtt
+
+ENV MQTT_SERVER="localhost"
+ENV MQTT_PORT=1883
+ENV MQTT_TOPIC="sensor/data"
+ENV PUBLISH_INTERVAL=1
+
+COPY mqtt_publisher.py /app/mqtt_publisher.py
+COPY entrypoint.sh /app/entrypoint.sh
+
+WORKDIR /app
+
+RUN chmod +x /app/entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]
